@@ -1,0 +1,36 @@
+# Rebuild the melody stream and append notes again, since the previous execution lost context
+melody = stream.Stream()
+
+# Set tempo (about 75 bpm for a slow, steady feel)
+melody.append(tempo.MetronomeMark(number=75))
+
+# Add time signature
+melody.append(meter.TimeSignature('4/4'))
+
+# Verse Melody
+verse_melody = [
+    note.G4, note.G4, note.E4, note.G4, note.A4,  # "Saw you there, and I felt something new,"
+    note.F4, note.E4, note.G4, note.F4,  # "Didn't know where it would lead me to"
+]
+
+# Chorus Melody
+chorus_melody = [
+    note.C5, note.C5, note.A4, note.C5, note.D5,  # "Right where we are is where I wanna be"
+    note.B4, note.A4, note.G4, note.G4,  # "No need for more, just you and me"
+]
+
+# Bridge Melody
+bridge_melody = [
+    note.A4, note.A4, note.G4, note.E4, note.A4,  # "Take it slow, we've got all night"
+]
+
+# Append melodies to the stream
+melody.append(verse_melody)
+melody.append(chorus_melody)
+melody.append(bridge_melody)
+
+# Write the melody to a MIDI file
+midi_file_path = '/mnt/data/right_where_we_are_melody.mid'
+melody.write('midi', fp=midi_file_path)
+
+midi_file_path  # Output the file path so the user can download the MIDI file
